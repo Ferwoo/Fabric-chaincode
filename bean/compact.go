@@ -12,13 +12,13 @@ import (
 //本条记录主键key由成员ID和合同ID联合组成，具备唯一性
 
 type Compact struct {
-	Timestamp          int64    "json:timestamp"          // 本条记录创建时间戳
-	UID                string   "json:uid"                //用户唯一ID
-	LoanAmount         string   "json:loanAmount"         //用户到款金额
-	ApplyDate          string   "json:applyDate"          //申请日期
-	CompactStartDate   string   "json:compactStartDate"   //贷款开始日期
-	CompactEndDate     string   "json:compactEndDate"     //贷款计划终止日期
-	RealEndDate        string   "json:realEndDate"        //贷款实际终止日期
+	Timestamp          int64    "json:timestamp"         // 本条记录创建时间戳
+	UID                string   "json:uid"               //用户唯一ID
+	LoanAmount         string   "json:loanAmount"        //用户到款金额
+	ApplyDate          string   "json:applyDate"         //申请日期
+	CompactStartDate   string   "json:compactStartDate"  //贷款开始日期
+	CompactEndDate     string   "json:compactEndDate"    //贷款计划终止日期
+	RealEndDate        string   "json:realEndDate"       //贷款实际终止日期
 
 	}
 
@@ -55,12 +55,10 @@ func Loan(stub shim.ChaincodeStubInterface,args []string ,name string) error  {
 		return fmt.Errorf("Json serialize Compact fail while Loan, compact id ="+args[5])
 	}
 	//生成合同联合主键,具备唯一性
-
 	key,err:=stub.CreateCompositeKey("Compact",[]string{name,args[5]})
 	if err!=nil{
 		return fmt.Errorf("Failed to CreateCompositeKey while Loan")
 	}
-
 	//保存合同信息
 	err=stub.PutState(key,compactJsonBytes)
 	if err !=nil{
