@@ -54,12 +54,14 @@ func Loan(stub shim.ChaincodeStubInterface,args []string ,name string) error  {
 	if err!=nil{
 		return fmt.Errorf("Json serialize Compact fail while Loan, compact id ="+args[5])
 	}
+
 	//生成合同联合主键,具备唯一性
 	key,err:=stub.CreateCompositeKey("Compact",[]string{name,args[5]})
 	if err!=nil{
 		return fmt.Errorf("Failed to CreateCompositeKey while Loan")
 	}
-	//保存合同信息
+
+	//保存合同的信息
 	err=stub.PutState(key,compactJsonBytes)
 	if err !=nil{
 		return fmt.Errorf("Failed to PutState while Loan,compact id ="+args[5])
