@@ -34,7 +34,7 @@ func (t *Finance) Invoke(stub shim.ChaincodeStubInterface) peer.Response  {
 	}
 }
 
-//记录贷款数据
+//记录贷款数据，返回msg
 func loan(stub shim.ChaincodeStubInterface,args[]string) peer.Response  {
 	name,err:=utils.GetCreator(stub)
 	if err!=nil{
@@ -48,7 +48,7 @@ func loan(stub shim.ChaincodeStubInterface,args[]string) peer.Response  {
 	return shim.Success([]byte("记录贷款数据成功"))
 }
 
-//主函数入口
+//主函数入口，启动链码
 func main()  {
 	if err:=shim.Start(new(Finance));err!=nil{
 		fmt.Printf("链码启动出现错误：%s",err)
