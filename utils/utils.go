@@ -17,13 +17,13 @@ func GetCreatorName(stub shim.ChaincodeStubInterface)(string,error)  {
 		return "",err
 	}
 	
-//格式化当前智能合约的操作成员名称
+//格式化当前智能合约操作成员名称
 	memberName :=name[(strings.Index(name,"@")+1):strings.LastIndex(name,".example.com")]
 	return memberName,nil
 
 }
 
-//获取操作人员以及解析相关的证书
+//获取操作人员以及解析相关证书
 func GetCreator(stub shim.ChaincodeStubInterface)(string,error)  {
 	creatorByte,_:=stub.GetCreator()
 	certStart:=bytes.IndexAny(creatorByte,"------开始")
