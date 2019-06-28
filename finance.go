@@ -34,7 +34,7 @@ func (t *Finance) Invoke(stub shim.ChaincodeStubInterface) peer.Response  {
 	}
 }
 
-//记录贷款数据，返回msg
+//记录贷款数据，返回相关msg
 func loan(stub shim.ChaincodeStubInterface,args[]string) peer.Response  {
 	name,err:=utils.GetCreator(stub)
 	if err!=nil{
