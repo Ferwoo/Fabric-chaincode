@@ -3,11 +3,11 @@ package utils
 import (
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 
-	"strings"
 	"bytes"
-	"fmt"
-	"encoding/pem"
 	"crypto/x509"
+	"encoding/pem"
+	"fmt"
+	"strings"
 )
 
 //获取当前操作智能合约的成员的具体名称

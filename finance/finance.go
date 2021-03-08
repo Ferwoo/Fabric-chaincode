@@ -1,12 +1,12 @@
-package main
+package finance
 
 import (
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 	"github.com/hyperledger/fabric/protos/peer"
 
+	"Fabric-chaincode/finance/bean"
+	"Fabric-chaincode/finance/utils"
 	"fmt"
-	"Finance/utils"
-	"Finance/bean"
 )
 
 type Finance struct {

@@ -1,11 +1,12 @@
 package bean
 
+
 import (
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 
+	"encoding/json"
 	"fmt"
 	"time"
-	"encoding/json"
 )
 
 //合同全集详情
